@@ -10,27 +10,24 @@ import org.w3c.dom.Document;
 
 public class DOMParserSchema {
  public static void main(String[] args) {
-  // actual location where .xsd and .xml reside
+  // actual location where .xsd and .xml files are available
   String schemaName = "employee.xsd";
   String xmlName = "employee-xsd.xml";
   Schema schema = loadSchema(schemaName);
   Document document = parseXmlDom(xmlName);
- 
-  if(document!=null)
- validateXml(schema, document);
+  validateXml(schema, document);
  }
  public static void validateXml(Schema schema, Document document) {
   try {
-   // 3. Get a validator from the schema.
+   // Validator for the schema.
    Validator validator = schema.newValidator();
    System.out.println("Validator Class: " + validator.getClass().getName());
    // validating the document against the schema
    validator.validate(new DOMSource(document));
-   System.out.println("XML Validation Passed.");
+   System.out.println("Validation passed.");
   } catch (Exception e) {
    // catching all validation exceptions
    System.out.println(e.toString());
-   System.out.println(" XML Validation Failed.");
   }
  }
  public static Schema loadSchema(String schemaFileName) {
@@ -55,10 +52,8 @@ public class DOMParserSchema {
    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
    DocumentBuilder builder = factory.newDocumentBuilder();
    document = builder.parse(new File(xmlName));
-   System.out.println("XML Parsing Successful!!");
   } catch (Exception e) {
    System.out.println(e.toString());
-   System.out.println("XML Parsing Failed");
   }
   return document;
  }
