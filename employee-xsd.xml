@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- This XML document describes employees in the company -->
-<company>
+<!-- This XML document describes employees in company -->
+<company xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="employee.xsd">
 	<employee id="1">
 	 <name>Neerav Poriya</name>
 	 <department>Development</department>
